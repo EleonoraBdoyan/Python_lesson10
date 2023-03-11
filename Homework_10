@@ -1,0 +1,103 @@
+# Իրականացնել for օգտագործելով iterator։
+
+iterable = [1,2,3]
+iterator = iter(iterable)
+while True:
+    try:
+        i = next(iterator)
+    except StopIteration:
+        break
+    else:
+        print(i)
+        
+
+# Իրականացնել սեփական MyIterable class-ը, որը կունենա iter և next ատրիբուտները։
+
+class MyIterable:
+    def __init__(self, sequence):
+        self.sequence = sequence
+        self.index = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.index < len(self.sequence):
+            item = self.sequence[self.index]
+            self.index += 1
+            return itrm
+        else:
+            StopIteration
+            
+            
+# Իրականացնել map, reduce, range ֆունկցիաները օգտագործելով գեներատոր ֆունկցիաներ։
+def map(func, iterable):
+    while True:
+        try:
+            for i in iterable:
+                yield func(i)
+        except StopIteration:
+            break
+            
+def reduce(func, iterable):
+    while True:
+        try:
+            res = iterable[0]
+            for i in iterable[1:]:
+                res = func(res,i)
+                yield res
+        except StopIteration:
+            break
+
+
+def range(start = 0, stop = None, step = 1):
+    if step == 0:
+        raise ValueError
+    val = 0
+    if stop is None:
+        while val < start:
+            yield val
+            val += step
+            if val == start:
+                break
+    if stop is not None and step > 0:
+        while start < stop:
+            yield start
+            start += step
+            if start == stop:
+                break
+    if stop is not None and step < 0:
+        while start < stop:
+            break
+        while start > stop:
+            yield start
+            start += step
+            if start == stop:
+                break
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
