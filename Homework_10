@@ -25,29 +25,23 @@ class MyIterable:
         if self.index < len(self.sequence):
             item = self.sequence[self.index]
             self.index += 1
-            return itrm
+            return item
         else:
-            StopIteration
+            raise StopIteration
             
             
 # Իրականացնել map, reduce, range ֆունկցիաները օգտագործելով գեներատոր ֆունկցիաներ։
 def map(func, iterable):
-    while True:
-        try:
-            for i in iterable:
-                yield func(i)
-        except StopIteration:
-            break
-            
+    for i in iterable:
+        yield func(i)
+       
+       
+       
 def reduce(func, iterable):
-    while True:
-        try:
-            res = iterable[0]
-            for i in iterable[1:]:
-                res = func(res,i)
-                yield res
-        except StopIteration:
-            break
+    res = iterable[0]
+    for i in iterable[1:]:
+        res = func(res,i)
+        yield res
 
 
 def range(start = 0, stop = None, step = 1):
@@ -74,30 +68,4 @@ def range(start = 0, stop = None, step = 1):
             start += step
             if start == stop:
                 break
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
